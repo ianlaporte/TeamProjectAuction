@@ -21,6 +21,6 @@ namespace TeamProjectAuction
         public DbSet<ClientPayment> ClientsPayments { get; set; }
         public DbSet<ClientPayment> ClientsPayments { get; set; }   // not sure
         public DbSet<ProductOwner> ProductOwner { get; set; }     // not sure
-        public DbSet<Product> Pruduct { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }
