@@ -20,7 +20,7 @@ namespace TeamProjectAuction
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static StartWindow _startWindowValues = new StartWindow();
+        private static List<StartWindow> _startWindowValues = new List<StartWindow>();
         public MainWindow()
         {
             InitializeComponent();
@@ -38,18 +38,28 @@ namespace TeamProjectAuction
 
         private void OnStartWindowLoad()
         {
+            _startWindowValues = new List<StartWindow>();
+            foreach (Client client in Globals.AuctionContext.Clients)
+            {
+                StartWindow Temp = new StartWindow();
+                Temp.Id = client.ClientId;
+                Temp.FirstName = client.ClientFirstName;
+                Temp.LastName = client.ClientLastName;
+                _startWindowValues.Add(Temp);
+            }
 
-            var JoinTable = from cl in Globals.AuctionContext.Clients
-                join cc in Globals.AuctionContext.ClientsContacts
-                    on cl.ClientId equals cc.ClientId
-                select new
+            foreach (StartWindow startWindow in _startWindowValues)
+            {
+                if (startWindow.PhoneNumber == null)
                 {
-                    ClientId = cc.ClientId, ClientFirstName = cl.ClientFirstName, ClientLastName = cl.ClientLastName,
-                    ClientPhoneNumber = cc.ClientPhoneNumber
-                };
-
+                    startWindow.PhoneNumber =
+                        (from cc in Globals.AuctionContext.ClientsContacts
+                            where cc.ClientId == startWindow.Id
+                            select cc.ClientPhoneNumber).FirstOrDefault();
+                }
+            }
             //var Table = new List<StartWindow>(JoinTable);
-            lvClientInfo.ItemsSource = JoinTable.ToList();
+            lvClientInfo.ItemsSource = _startWindowValues;
         }
 
         private void BtnAdd_OnClick(object sender, RoutedEventArgs e)
@@ -59,6 +69,7 @@ namespace TeamProjectAuction
             if (ReturnValue == true)
             {
                 OnStartWindowLoad();
+                lvClientInfo.Items.Refresh();
             }
         }
 
@@ -70,19 +81,19 @@ namespace TeamProjectAuction
                 return;
             }
 
-            
-            //StartWindow TargetItem = (StartWindow)lvClientInfo.SelectedItem ;
+            StartWindow TargetItem = (StartWindow)lvClientInfo.SelectedItem;
 
-            //Client TargetClient =
-            //    (from cl in Globals.AuctionContext.Clients where cl.ClientId == TargetItem.Id select cl)
-            //    .FirstOrDefault<Client>();
+            Client TargetClient =
+                (from cl in Globals.AuctionContext.Clients where cl.ClientId == TargetItem.Id select cl)
+                .FirstOrDefault<Client>();
 
-            //ClientInfo ci = new ClientInfo(TargetClient);
-            //bool? ReturnValue = ci.ShowDialog();
-            //if (ReturnValue == true)
-            //{
-            //    OnStartWindowLoad();
-            //}
+            ClientInfo ci = new ClientInfo(TargetClient);
+            bool? ReturnValue = ci.ShowDialog();
+            if (ReturnValue == true)
+            {
+                OnStartWindowLoad();
+                lvClientInfo.Items.Refresh();
+            }
         }
     }
 }

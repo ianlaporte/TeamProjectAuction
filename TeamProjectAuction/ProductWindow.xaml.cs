@@ -37,7 +37,7 @@ namespace TeamProjectAuction
             txtProductStartPrice.Text = "";
             txtProductSoldPrice.Text = "";
 
-            List<ProductOwner> productOwners = Globals.AuctionContext.Clients.DbSet<ProductOwner>();  //Correct this line
+            List<ProductOwner> productOwners = Globals.AuctionContext.ProductOwner.ToList();  //Correct this line
             lvProductOwners.ItemsSource = productOwners;
             lvProductOwners.Items.Refresh();
 
