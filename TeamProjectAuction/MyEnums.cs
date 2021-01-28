@@ -14,5 +14,12 @@ namespace TeamProjectAuction
         }
 
         public enum SexEnum { Male, Female }
+        
+        public enum ProductCategory
+        {
+            Appliances, Vehicules, Farming, Electronics, Antiques, Collectibles
+        }
+
     }
 }
+
