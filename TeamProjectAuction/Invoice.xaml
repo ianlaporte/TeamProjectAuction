@@ -1,0 +1,100 @@
+﻿<Window x:Class="TeamProjectAuction.Invoice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAuction"
+        mc:Ignorable="d"
+        Title="Invoice" Height="1293" Width="900">
+    <Grid Width="800">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Background="#66C2F9">
+                <Label Name="lblInvoice" Height="150" Content="INVOICE"
+                       FontSize="60" VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       FontFamily="Franklin Gothic" HorizontalAlignment="Left"
+                       Margin="20,0" Foreground="White"/>
+                <StackPanel Orientation="Vertical" Margin="180, 0, 0, 0">
+                    <StackPanel Orientation="Horizontal" Margin="0, 5, 0, 0">
+                        <Label Content="Invoice Number:" FontSize="18" Width="180"/>
+                        <Label Name="lblInvoiceNumber" Content="00000001" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Payment Status:" FontSize="18" Width="180"/>
+                        <Label Name="lblPaymentStatus" Content="Pending" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Issue Date:" FontSize="18" Width="180"/>
+                        <Label Name="lblIssueDate" Content="2021-01-06" FontSize="18"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Client Number:" FontSize="18" Width="180"/>
+                        <Label Name="lblClientNumber" Content="ABC001" FontSize="18"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <Label Content="BILLED TO" HorizontalAlignment="Center" FontFamily="Georgia" FontWeight="Black"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Name" FontSize="16" Width="150" Margin="10, 0, 0, 0"/>
+                    <Label Content="John Doe" FontSize="16" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Address" FontSize="16" Width="150" Margin="10, 0, 0, 0"/>
+                    <Label Content="1111 Address Road NW, Montreal, QC, H1H 1A1" FontSize="16" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Phone Number" FontSize="16" Width="150" Margin="10, 0, 0, 0"/>
+                    <Label Content="514-111-1111" FontSize="16" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Email" FontSize="16" Width="150" Margin="10, 0, 0, 0"/>
+                    <Label Content="ABCD0001@Gmail.com" FontSize="16" />
+                </StackPanel>
+            </StackPanel>
+            <ListView Height="600">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Product #" Width="auto"/>
+                        <GridViewColumn Header="Preview" Width="100"/>
+                        <GridViewColumn Header="Unit Cost" Width="auto"/>
+                        <GridViewColumn Header="Quantity" Width="auto"/>
+                        <GridViewColumn Header="Amount" Width="auto"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Subtotal" FontSize="16" Width="150" Margin="0, 0, 50, 0"/>
+                    <Label Content="$1000" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="QST 9.975%" FontSize="16" Width="150" Margin="0, 0, 50, 0"/>
+                    <Label Content="$99.75" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="GST 5%" FontSize="16" Width="150" Margin="0, 0, 50, 0"/>
+                    <Label Content="$50" FontSize="16"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Service Fee 2%" FontSize="16" Width="150" Margin="0, 0, 50, 0"/>
+                    <Label Content="$20" FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Total" FontSize="22" Width="150" Margin="0, 0, 50, 0" FontWeight="Bold"/>
+                <Label Content="$1169.75" FontSize="22" FontWeight="Bold"/>
+            </StackPanel>
+
+        </StackPanel>
+        <DockPanel VerticalAlignment="Bottom" Background="#66C2F9">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Company Info Here"/>
+                <Label Content="Copyright etc."/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Label Content="Tax Number: XXXXXXXX" FontSize="20" />
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

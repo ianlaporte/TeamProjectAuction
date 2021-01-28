@@ -1,0 +1,75 @@
+﻿<Window x:Class="TeamProjectAuction.ProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAuction"
+        mc:Ignorable="d"
+        Title="ProductWindow" Height="460" Width="740" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    
+    <Grid>
+        <ListView x:Name="lvProductOwners" HorizontalAlignment="Left" Height="263" Margin="16,15,0,0" VerticalAlignment="Top" Width="385" SelectionChanged="lvProductOwners_SelectionChanged">
+            <ListView.View>
+                <GridView>
+
+
+                    <GridViewColumn x:Name="GridViewColumnLotId" Header=" Lot Id " Width="40" DisplayMemberBinding="{Binding LotId}" />
+                    <GridViewColumn x:Name="GridViewColumnProductId" Header=" Product Id " Width="75" DisplayMemberBinding="{Binding ProductId}" />
+                    <GridViewColumn x:Name="GridViewColumnProductName" Header=" Product Nam " Width="90" DisplayMemberBinding="{Binding ProductName}" />
+                    <GridViewColumn x:Name="GridViewColumnProductDescription" Header=" Description " Width="100" DisplayMemberBinding="{Binding ProductDescription}" />
+                    <GridViewColumn x:Name="GridViewColumnStartPrice" Header=" Start Price " Width="75" DisplayMemberBinding="{Binding ProductStartPrice}" />
+
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+
+        <Label x:Name="lblOwnerId" Content="Owner Id:" HorizontalAlignment="Left" Margin="414,15,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtOwnerId" HorizontalAlignment="Left" Height="23" Margin="542,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="lbOwnerName" Content="Owner Name: " HorizontalAlignment="Left" Margin="414,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtOwnerName" HorizontalAlignment="Left" Height="23" Margin="542,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+
+        <Label x:Name="lbLotId" Content="Lot Id:" HorizontalAlignment="Left" Margin="412,69,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLotId" HorizontalAlignment="Left" Height="23" Margin="542,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="lbCategoryId" Content="Category Id" HorizontalAlignment="Left" Margin="412,95,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCategoryId" HorizontalAlignment="Left" Height="23" Margin="542,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="lbProductId" Content="Product Id:" HorizontalAlignment="Left" Margin="412,121,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtProductId" HorizontalAlignment="Left" Height="23" Margin="542,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="lbProductName" Content="Product Name:" HorizontalAlignment="Left" Margin="412,147,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="542,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="lbProductDescription" Content="Product Description:" HorizontalAlignment="Left" Margin="412,186,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtProductDescription" HorizontalAlignment="Left" Height="48" Margin="542,176,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" Width="170" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="lbProductStartPrice" Content="Product Start Price:" HorizontalAlignment="Left" Margin="412,224,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtProductStartPrice" HorizontalAlignment="Left" Height="23" Margin="542,227,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+        <Label x:Name="lbProductSoldPrice" Content="Product Sold Price:" HorizontalAlignment="Left" Margin="414,252,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtProductSoldPrice" HorizontalAlignment="Left" Height="23" Margin="542,255,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+
+
+        <Button x:Name="btnImageUpcoming" Margin="28,293,542,14" Click="btnImageUpcoming_Click" >
+            <Grid Width="140" Height="105">
+                <TextBlock x:Name="tbImageUpcoming" Text="Click to add a single picture. This will also display a product's main image after a search was entered." TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <Image x:Name="imageViewerUpcoming" Stretch="UniformToFill" />
+            </Grid>
+        </Button>
+
+
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="305,332,0,0" VerticalAlignment="Top" Width="65" Click="btnAdd_Click"/>
+        <!-- For commit 28jan10h30: the "Add many" button (Name="btnAddManyProducts) opens a dialog page to upload many images and than the user has to update them one by one for product name, description, etc.., -->
+        <Button x:Name="btnAddManyProducts" Content="Add many" HorizontalAlignment="Left" Margin="375,332,0,0" VerticalAlignment="Top" Width="65" Click="btnAddManyProducts_Click"/>
+        <Button x:Name="btnSearchProduct" Content="Search" HorizontalAlignment="Left" Margin="445,332,0,0" VerticalAlignment="Top" Width="65" Click="btnSearchProduct_Click"/>
+        <Button x:Name="btnSeeNextProduct" Content="See next" HorizontalAlignment="Left" Margin="515,332,0,0" VerticalAlignment="Top" Width="65" Click="btnSeeNextProduct_Click"/>
+        <Button x:Name="btnUpdateProduct" Content="Update" IsEnabled="False" HorizontalAlignment="Left" Margin="305,358,0,0" VerticalAlignment="Top" Width="65" Click="btnUpdateProduct_Click"/>
+        <Button x:Name="btnDeleteOneProduct" Content="Delete One Product" IsEnabled="False" HorizontalAlignment="Left" Margin="375,358,0,0" VerticalAlignment="Top" Width="65" Click="btnDeleteOneProduct_Click"/>
+        <Button x:Name="btnDeleteManyProducts" Content="Delete Multi Selection" IsEnabled="False" HorizontalAlignment="Left" Margin="445,358,0,0" VerticalAlignment="Top" Width="135" Click="btnManyProducts_Click" Height="20"/>
+
+
+    </Grid>
+</Window>
