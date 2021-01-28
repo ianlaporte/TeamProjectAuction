@@ -1,0 +1,43 @@
+﻿<Window x:Class="TeamProjectAuction.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAuction"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView Name="lvClientInfo" HorizontalAlignment="Left" Height="371" Margin="10,22,0,0" VerticalAlignment="Top" Width="461">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Client #" Width="80" DisplayMemberBinding="{Binding ClientId}"/>
+                    <GridViewColumn Header="First Name" Width="125" DisplayMemberBinding="{Binding ClientFirstName}"/>
+                    <GridViewColumn Header="Last Name" Width="125" DisplayMemberBinding="{Binding ClientLastName}"/>
+                    <GridViewColumn Header="Phone Number" Width="125" DisplayMemberBinding="{Binding ClientPhoneNumber}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Name="lblSort" Content="Sort By" HorizontalAlignment="Left" Margin="495,25,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="cboSort" HorizontalAlignment="Left" Margin="595,28,0,0" VerticalAlignment="Top" Width="171">
+            <ComboBoxItem Content="Name" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="Client Number" HorizontalContentAlignment="Center"/>
+            <ComboBoxItem Content="Phone Number" HorizontalContentAlignment="Center"/>
+        </ComboBox>
+
+        <GroupBox Header="Search" Width="270" Margin="496,81,28,196">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Name="rdoName" Content="Name" Width="80" Height="30" VerticalContentAlignment="Center" GroupName="SearchGroup" Margin="5, 0, 5, 0"/>
+                    <RadioButton Name="rdoPhone" Content="Phone #" Width="80" VerticalContentAlignment="Center" GroupName="SearchGroup" Margin="5, 0, 5, 0"/>
+                    <RadioButton Name="rdoClientNumber" Content="Client #" Width="80" VerticalContentAlignment="Center" GroupName="SearchGroup" Margin="5, 0, 0, 0"/>
+                </StackPanel>
+                <TextBox Name="txtSearch" Height="30" Margin="10"/>
+                <Button Name="btnSearch" Width="100" Height="30" Content="Search"/>
+            </StackPanel>
+        </GroupBox>
+        <Button Name="btnAdd" Content="Add New Client" HorizontalAlignment="Left" Margin="534,308,0,0" VerticalAlignment="Top" Width="200" Click="BtnAdd_OnClick"/>
+        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="534,358,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="659,358,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnDetail" Content="Show Details" HorizontalAlignment="Left" Margin="534,258,0,0" VerticalAlignment="Top" Width="200" Click="BtnDetail_OnClick"/>
+    </Grid>
+</Window>
