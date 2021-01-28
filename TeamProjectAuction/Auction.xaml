@@ -1,0 +1,92 @@
+﻿<Window x:Class="TeamProjectAuction.Auction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAuction"
+        mc:Ignorable="d"
+        Title="Auction" Height="480" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Storyboard x:Key="CarouselStoryboard">
+            <DoubleAnimation
+                Storyboard.TargetName="CarouselTransform" 
+                Storyboard.TargetProperty="X"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Grid>
+        <Grid Margin="7,10,10,7">
+
+            <ListView x:Name="lvAuctionList" HorizontalAlignment="Left" Height="258" Margin="16,20,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="lvAuctionList_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="GridViewColumnLotId" Header=" Lot Id " Width="50" DisplayMemberBinding="{Binding LotId}" />
+                        <GridViewColumn x:Name="GridViewColumnProductName" Header=" Product Name " Width="100" DisplayMemberBinding="{Binding ProductName}" />
+                        <GridViewColumn x:Name="GridViewColumnProductDescription" Header=" Description " Width="110" DisplayMemberBinding="{Binding ProductDescription}" />
+                        <GridViewColumn x:Name="GridViewColumnStartPrice" Header=" Start Price " Width="75" DisplayMemberBinding="{Binding ProductStartPrice}" />
+
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+
+            <Label x:Name="lblAuctionedProductOwnerId" Content="Auctioned Product Owner _Id:" HorizontalAlignment="Left" Margin="378,17,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtAuctionedProductOwnerId" HorizontalAlignment="Left" Height="23" Margin="567,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbAuctionedProductOwnerName" Content="Auctioned Product Owner _Name:" HorizontalAlignment="Left" Margin="378,43,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtAuctionedProductOwnerName" HorizontalAlignment="Left" Height="23" Margin="567,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbLotId" Content="Lot Id:" HorizontalAlignment="Left" Margin="378,72,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtLotId" HorizontalAlignment="Left" Height="23" Margin="567,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbCategoryId" Content="Category Id" HorizontalAlignment="Left" Margin="378,95,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtCategoryId" HorizontalAlignment="Left" Height="23" Margin="567,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbProductId" Content="Product Id:" HorizontalAlignment="Left" Margin="378,121,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtProductId" HorizontalAlignment="Left" Height="23" Margin="567,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbProductName" Content="Product Name:" HorizontalAlignment="Left" Margin="378,147,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="567,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbProductDescription" Content="Product Description:" HorizontalAlignment="Left" Margin="378,186,0,0" VerticalAlignment="Top"/>
+            <!-- We should use «  CommandBindings=""  » to get the emum form «  public MyEnums CategoryName { get; set; } »  at Product.cs-->
+            <ComboBox x:Name="txtProductDescription" AllowDrop="True"  HorizontalAlignment="Left" Height="48" Margin="567,175,0,0" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbProductStartPrice" Content="Product Start Price:" HorizontalAlignment="Left" Margin="378,224,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtProductStartPrice" HorizontalAlignment="Left" Height="23" Margin="567,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lbProductSoldPrice" Content="Product Sold Price:" HorizontalAlignment="Left" Margin="378,252,0,0" VerticalAlignment="Top"/>
+
+            <TextBox x:Name="txtProductSoldPrice" HorizontalAlignment="Left" Height="23" Margin="567,254,0,0" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+
+            <Label Name="lbCurrentBidAmount" Content="Bid Amount:" HorizontalAlignment="Left" Margin="575,306,0,0" VerticalAlignment="Top" Width="79"/>
+            <TextBox Name="txtCurrentBidAmount" HorizontalAlignment="Left" Height="23" Margin="667,310,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100"/>
+
+            <Label Name="lbCurrentBidderClientID" Content="Current Bidder Client Id:" HorizontalAlignment="Left" Margin="514,335,0,0" VerticalAlignment="Top" Width="140"/>
+            <TextBox Name="txtCurrentBidderClientId" HorizontalAlignment="Left" Height="23" Margin="667,339,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100"/>
+
+            <Canvas Margin="17,308,279,2">
+                <StackPanel Name="Carousel" Orientation="Horizontal">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform x:Name="CarouselTransform" />
+                    </StackPanel.RenderTransform>
+                    <Button Height="90" Width="160" Content="Page1"/>
+                    <Button Height="90" Width="160" Content="Page2"/>
+                    <Button Height="90" Width="160" Content="Page3"/>
+                </StackPanel>
+                <Button Click="btnLeft_Click" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Top="94"/>
+                <Button Click="btnRight_Click" Content="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Left="435" Canvas.Top="94"/>
+            </Canvas>
+
+
+            <Button x:Name="btnSold" Content="Sold" HorizontalAlignment="Left" Margin="567,378,0,0" VerticalAlignment="Top" Width="200" Click="btnSold_Click"/>
+            <Button x:Name="btnPrevious" Content="Previous" HorizontalAlignment="Left" Margin="567,404,0,0" VerticalAlignment="Top" Width="60" Click="btnPrevious_Click"/>
+            <Button x:Name="btnCurrent" Content="Current" HorizontalAlignment="Left" Margin="638,404,0,0" VerticalAlignment="Top" Width="60" Click="btnCurrent_Click"/>
+            <Button x:Name="btnNext" Content="Next" HorizontalAlignment="Left" Margin="707,404,0,0" VerticalAlignment="Top" Width="60" Click="btnNext_Click"/>
+
+
+        </Grid>
+    </Grid>
+</Window>
+
