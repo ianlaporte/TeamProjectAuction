@@ -14,12 +14,12 @@ namespace TeamProjectAuction
         [Key] public int ClientId { get; set; }
         [Required] public string ClientFirstName { get; set; }
         [Required] public string ClientLastName { get; set; }
-        public SexEnum Sex { get; set; }
+        public MyEnums.SexEnum Sex { get; set; }
         [NotMapped]
         public string ClientName => _clientName = ClientFirstName + ClientLastName;
 
         [NotMapped] public int ClientTrackingId { get; set; }
-        public enum SexEnum { Male, Female }
+        
 
         public virtual ClientContact ClientContact { get; set; }
         public virtual ClientAddress ClientAddress { get; set; }

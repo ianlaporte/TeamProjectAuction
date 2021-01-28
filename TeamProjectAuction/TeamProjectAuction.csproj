@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MyEnums.cs" />
     <Compile Include="ProductOwner.cs" />
     <Compile Include="StartWindow.cs" />
     <Page Include="Auction.xaml">
