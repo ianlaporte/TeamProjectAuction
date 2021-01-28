@@ -70,8 +70,17 @@
                     <StackPanel.RenderTransform>
                         <TranslateTransform x:Name="CarouselTransform" />
                     </StackPanel.RenderTransform>
-                    <Button Height="90" Width="160" Content="Page1"/>
-                    <Button Height="90" Width="160" Content="Page2"/>
+                    <Button Name="" Height="90" Width="160" Content="Page1"/>
+
+                    <Button Name="btnImage" Height="92" Width="162" Click="btnImage_Click" >
+                        <Grid Height="90" Width="160">
+                            <TextBlock x:Name="tbImage" Text="Page 2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Image Name="imageViewer" Stretch="UniformToFill" />
+                        </Grid>
+                    </Button>
+
+
+
                     <Button Height="90" Width="160" Content="Page3"/>
                 </StackPanel>
                 <Button Click="btnLeft_Click" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Top="94"/>

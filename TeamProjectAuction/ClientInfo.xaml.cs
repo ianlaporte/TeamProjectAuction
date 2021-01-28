@@ -147,6 +147,16 @@ namespace TeamProjectAuction
                     MyTargetClient.ClientContact.ClientPhoneNumber = txtPhoneNumber.Text;
                     MyTargetClient.ClientContact.ClientFaceBook = txtFaceBook.Text;
 
+                    List<Client> temClients = Globals.AuctionContext.Clients.ToList();
+
+                    foreach (Client aClient in temClients)
+                    {
+                        aClient.ClientFirstName = "asdfasf";
+                    }
+                    
+                    
+                    
+                    
                     Globals.AuctionContext.SaveChanges();
                 }
 

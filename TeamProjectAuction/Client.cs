@@ -19,7 +19,10 @@ namespace TeamProjectAuction
         public string ClientName => _clientName = ClientFirstName + ClientLastName;
 
         [NotMapped] public int ClientTrackingId { get; set; }
-        
+
+        public int LotCount { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
 
         public virtual ClientContact ClientContact { get; set; }
         public virtual ClientAddress ClientAddress { get; set; }
