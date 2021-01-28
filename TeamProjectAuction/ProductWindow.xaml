@@ -34,8 +34,8 @@
         <Label x:Name="lbLotId" Content="Lot Id:" HorizontalAlignment="Left" Margin="412,69,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtLotId" HorizontalAlignment="Left" Height="23" Margin="542,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
 
-        <Label x:Name="lbCategoryId" Content="Category Id" HorizontalAlignment="Left" Margin="412,95,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCategoryId" HorizontalAlignment="Left" Height="23" Margin="542,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
+        <Label x:Name="lbCategory" Content="Category" HorizontalAlignment="Left" Margin="412,95,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Height="23" Margin="542,98,0,0" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
 
         <Label x:Name="lbProductId" Content="Product Id:" HorizontalAlignment="Left" Margin="412,121,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtProductId" HorizontalAlignment="Left" Height="23" Margin="542,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>

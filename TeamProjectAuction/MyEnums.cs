@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamProjectAuction
 {
-    public staticclass MyEnums
+    public static class MyEnums
     {
         public enum PreferredPaymentType
         {

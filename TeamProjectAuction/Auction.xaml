@@ -50,14 +50,13 @@
             <TextBox x:Name="txtProductName" HorizontalAlignment="Left" Height="23" Margin="567,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
 
             <Label x:Name="lbProductDescription" Content="Product Description:" HorizontalAlignment="Left" Margin="378,186,0,0" VerticalAlignment="Top"/>
-            <!-- We should use «  CommandBindings=""  » to get the emum form «  public MyEnums CategoryName { get; set; } »  at Product.cs-->
-            <ComboBox x:Name="txtProductDescription" AllowDrop="True"  HorizontalAlignment="Left" Height="48" Margin="567,175,0,0" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="txtProductDescription" HorizontalAlignment="Left" Height="48" Margin="567,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" VerticalScrollBarVisibility="Visible" Width="200" VerticalContentAlignment="Center"/>
 
             <Label x:Name="lbProductStartPrice" Content="Product Start Price:" HorizontalAlignment="Left" Margin="378,224,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="txtProductStartPrice" HorizontalAlignment="Left" Height="23" Margin="567,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
 
             <Label x:Name="lbProductSoldPrice" Content="Product Sold Price:" HorizontalAlignment="Left" Margin="378,252,0,0" VerticalAlignment="Top"/>
-
+            <!-- How do we bind to the "last/or/final value entered in the Label "lbBidAmount"? Is it via the entity-field "BidAmount" using "Binding="{Binding BidAmount}"?  It didn't work... :-/ -->
             <TextBox x:Name="txtProductSoldPrice" HorizontalAlignment="Left" Height="23" Margin="567,254,0,0" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
 
             <Label Name="lbCurrentBidAmount" Content="Bid Amount:" HorizontalAlignment="Left" Margin="575,306,0,0" VerticalAlignment="Top" Width="79"/>
@@ -71,8 +70,17 @@
                     <StackPanel.RenderTransform>
                         <TranslateTransform x:Name="CarouselTransform" />
                     </StackPanel.RenderTransform>
-                    <Button Height="90" Width="160" Content="Page1"/>
-                    <Button Height="90" Width="160" Content="Page2"/>
+                    <Button Name="" Height="90" Width="160" Content="Page1"/>
+
+                    <Button Name="btnImage" Height="92" Width="162" Click="btnImage_Click" >
+                        <Grid Height="90" Width="160">
+                            <TextBlock x:Name="tbImage" Text="Page 2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Image Name="imageViewer" Stretch="UniformToFill" />
+                        </Grid>
+                    </Button>
+
+
+
                     <Button Height="90" Width="160" Content="Page3"/>
                 </StackPanel>
                 <Button Click="btnLeft_Click" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Top="94"/>

@@ -40,18 +40,34 @@ namespace TeamProjectAuction
         public ProductWindow()
         {
             InitializeComponent();
+
+            cbCategory.ItemsSource = Enum.GetValues(typeof(MyEnums.ProductCategory));
+
         }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            string owner_name = txtOwnerName.Text;
-            string product_name = txtProductName.Text;
-            string product_descr = txtProductDescription.Text;
+            Product aProduct = new Product
+            {
+                CategoryName = (MyEnums.ProductCategory)cbCategory.SelectedItem,
+                ProductName = txtProductName.Text,
+                ProductDescription = txtProductDescription.Text,
+                ProductStartPrice = double.Parse(txtProductStartPrice.Text)
+            };
+            //string owner_name = txtOwnerName.Text;
+            //string product_name = txtProductName.Text;
+            //string product_descr = txtProductDescription.Text;
+
+            // ComboBox emumVariablesFromCb = cbCategory;
+            //MyEnums.ProductCategory emumVariablesFromCb = (MyEnums.ProductCategory)cbCategory.SelectedItem;
+            
             int product_start_price, product_sold_price;
             int.TryParse(txtProductStartPrice.Text, out product_start_price);
             int.TryParse(txtProductSoldPrice.Text, out product_sold_price);
+            
             Stream stream = File.OpenRead(filename);
             byte[] product_image = new byte[stream.Length];
             stream.Read(product_image, 0, (int)stream.Length);
+            
             tblProduct product = new tblProduct();
             product.tblOwner.OwnerName = owner_name;
             product.ProductName = product_name;
