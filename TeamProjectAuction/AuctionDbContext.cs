@@ -20,6 +20,7 @@ namespace TeamProjectAuction
         public DbSet<ClientContact> ClientsContacts { get; set; }
         public DbSet<ClientPayment> ClientsPayments { get; set; }
         // public DbSet<ClientPayment> ClientsPayments { get; set; }   // not sure
-        public DbSet<ProductOwner> ProductOwner { get; set; }     // not sure
+        // public DbSet<ProductOwner> ProductOwner { get; set; }     // not sure
+        public DbSet<Product> Products { get; set; }
     }
 }

@@ -21,11 +21,13 @@ namespace TeamProjectAuction
     public partial class MainWindow : Window
     {
         private static List<StartWindow> _startWindowValues = new List<StartWindow>();
+        
         public MainWindow()
         {
             InitializeComponent();
             try
             {
+
                 Globals.AuctionContext = new AuctionDbContext();
                 OnStartWindowLoad();
             }
