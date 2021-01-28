@@ -11,13 +11,13 @@ namespace TeamProjectAuction
     public class ClientAddress
     {
         [Key] [ForeignKey("Client")] public int ClientId { get; set; }
-        public int ClientStreetNumber { get; set; }
+        public string ClientStreetNumber { get; set; }
         public string ClientStreetName { get; set; }
         public string ClientCity { get; set; }
         public string ClientProvince { get; set; }
         public string ClientCountry { get; set; }
         public string ClientPostCode { get; set; }
 
-        [Required] public virtual Client Client { get; set; }
+        public virtual Client Client { get; set; }
     }
 }
