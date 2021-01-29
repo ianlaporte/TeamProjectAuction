@@ -20,7 +20,7 @@ namespace TeamProjectAuction
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static StartWindow _startWindowValues = new StartWindow();
+        private static List<StartWindow> _startWindowValues = new List<StartWindow>();
         public MainWindow()
         {
             InitializeComponent();

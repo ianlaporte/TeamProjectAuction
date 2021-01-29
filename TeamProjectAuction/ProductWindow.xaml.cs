@@ -26,13 +26,25 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.IO;
-using System.Windows.Data;
-        byte[] productImage;  // Is this needed
+using Microsoft.Win32;
 
+namespace TeamProjectAuction
+{
+    /// <summary>
+    /// Interaction logic for ProductWindow.xaml
+    /// </summary>
+    public partial class ProductWindow : Window
+    {
+        public string filename;
+        private byte[] productImage;
+        public ProductWindow()
+        {
+            InitializeComponent();
+        }
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Product aProduct = new Product
+            {
                 CategoryName = (MyEnums.ProductCategory)cbCategory.SelectedItem,
                 ProductName = txtProductName.Text,
                 ProductDescription = txtProductDescription.Text,
@@ -50,6 +62,26 @@ using System.Windows.Data;
             //byte[] product_image = new byte[stream.Length];
             //stream.Read(product_image, 0, (int)stream.Length);
 
+            //product.tblOwner.OwnerName = owner_name;
+            //product.ProductName = product_name;
+            //product.ProductDescription = product_descr;
+            //product.ProductStartPrice = product_start_price;
+            //product.ProductSoldPrice = product_sold_price;
+            //product.ProductImage = product_image;
+            //ProjectAuctionEntities entities = new ProjectAuctionEntities();
+            //entities.tblProducts.Add(product);
+            //entities.SaveChanges();
+
+            aProduct.ProductImage = productImage;
+            aProduct.ClientId = Int32.Parse(txtOwnerId.Text);
+            Client TargetClient = (from c in Globals.AuctionContext.Clients
+                                   where c.ClientId == Int32.Parse(txtOwnerId.Text)
+                                   select c).FirstOrDefault();
+            aProduct.Client = TargetClient;
+            Globals.AuctionContext.Products.Add(aProduct);
+            Globals.AuctionContext.SaveChanges();
+
+        }
             //product.tblOwner.OwnerName = owner_name;
             //product.ProductName = product_name;
             //product.ProductDescription = product_descr;
@@ -143,12 +175,32 @@ using System.Windows.Data;
 
         private void btnImageUpcoming_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog fd = new Microsoft.Win32.OpenFileDialog();
-            fd.Filter = "All Files (*.*)|*.*|JPG files (*.jpg)|*.jpg|PNG files (*.png)|*.png|JPEG files (*.jpeg)|*.jpeg";
-            if (fd.ShowDialog() == true)
-}                imageViewerUpcoming.Source = new BitmapImage(new Uri(fd.FileName));
-                filename = fd.FileName;
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Image files (*.jpg;*.jpeg;*.gif;*.png)|*.jpg;*.jpeg;*.gif;*.png|All Files (*.*)|*.*";
+            dlg.RestoreDirectory = true;
+
+            if (dlg.ShowDialog() == true)
+            {
+                try
+                {
+                    productImage = File.ReadAllBytes(dlg.FileName);
+                    tbImageUpcoming.Visibility = Visibility.Hidden;
+                    BitmapImage bitmap = Utils.ByteArrayToBitmapImage(productImage); // ex: SystemException
+                    imageViewerUpcoming.Source = bitmap;
+
+                }
+                catch (Exception ex) when (ex is SystemException || ex is IOException)
+                {
+                    MessageBox.Show(ex.Message, "File reading failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
+            //Microsoft.Win32.OpenFileDialog fd = new Microsoft.Win32.OpenFileDialog();
+            //fd.Filter = "All Files (*.*)|*.*|JPG files (*.jpg)|*.jpg|PNG files (*.png)|*.png|JPEG files (*.jpeg)|*.jpeg";
+            //if (fd.ShowDialog() == true)
+            //{
+            //    imageViewerUpcoming.Source = new BitmapImage(new Uri(fd.FileName));
+            //    filename = fd.FileName;
+            //}
         }
 
 

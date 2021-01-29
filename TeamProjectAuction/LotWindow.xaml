@@ -19,8 +19,9 @@
         </ListView>
         <Label Content="Lot #" HorizontalAlignment="Left" Margin="575,53,0,0" 
                VerticalAlignment="Top" Height="48" Width="70" FontSize="20px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Name="lblLotNumber"  Content="?" HorizontalAlignment="Left" Margin="698,53,0,0" 
-               VerticalAlignment="Top" Height="48" Width="70" FontSize="25px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="OrangeRed"/>
+        <TextBox Name="txtLotNumber"  Text="?" HorizontalAlignment="Left" Margin="698,53,0,0" 
+               VerticalAlignment="Top" Height="48" Width="70" FontSize="25px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="OrangeRed"
+               TextChanged="TxtLotNumber_OnTextChanged"/>
         <Label Name="lblLotName" Content="Target Lot" HorizontalAlignment="Left" Margin="575,145,0,0" 
                VerticalAlignment="Top" Height="48" Width="193" FontSize="25px" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="Crimson"/>
         <Button Name="btnShowProductDetails" Content="Show Product Details" HorizontalAlignment="Left" Margin="601,298,0,0" VerticalAlignment="Top" Width="151" Height="56"/>
