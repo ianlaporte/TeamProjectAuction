@@ -17,7 +17,7 @@ namespace TeamProjectAuction
         
         public enum ProductCategory
         {
-            Appliances, Vehicules, Farming, Electronics, Antiques, Collectibles
+            Accessories, Antiques, Appliances, Collectibles, Clothing, Deals, Electronics, Entertainment, Family, Farming, Furniture, Hobbies, Garden, Sports, Vehicles, Other
         }
 
     }
