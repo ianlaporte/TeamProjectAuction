@@ -1,6 +1,6 @@
 ﻿namespace TeamProjectAuction
 {
-    public class Globals
+    public static class Globals
     {
         public static AuctionDbContext AuctionContext;
     }

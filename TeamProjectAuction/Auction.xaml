@@ -16,7 +16,7 @@
     </Window.Resources>
 
     <Grid>
-        <!--<Grid Margin="7,10,10,7">
+        <Grid Margin="7,10,10,7">
 
             <ListView x:Name="lvAuctionList" HorizontalAlignment="Left" Height="258" Margin="16,20,0,0" VerticalAlignment="Top" Width="340" SelectionChanged="lvAuctionList_SelectionChanged">
                 <ListView.View>
@@ -40,8 +40,8 @@
             <Label x:Name="lbLotId" Content="Lot Id:" HorizontalAlignment="Left" Margin="378,72,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="txtLotId" HorizontalAlignment="Left" Height="23" Margin="567,71,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
 
-            <Label x:Name="lbCategoryId" Content="Category Id" HorizontalAlignment="Left" Margin="378,95,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtCategoryId" HorizontalAlignment="Left" Height="23" Margin="567,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
+            <Label x:Name="lbCategory" Content="Category Id" HorizontalAlignment="Left" Margin="378,95,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="cbCategory" HorizontalAlignment="Left" Height="23" Margin="567,97,0,0" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
 
             <Label x:Name="lbProductId" Content="Product Id:" HorizontalAlignment="Left" Margin="378,121,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="txtProductId" HorizontalAlignment="Left" Height="23" Margin="567,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
@@ -56,7 +56,7 @@
             <TextBox x:Name="txtProductStartPrice" HorizontalAlignment="Left" Height="23" Margin="567,226,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
 
             <Label x:Name="lbProductSoldPrice" Content="Product Sold Price:" HorizontalAlignment="Left" Margin="378,252,0,0" VerticalAlignment="Top"/>
-            --><!-- How do we bind to the "last/or/final value entered in the Label "lbBidAmount"? Is it via the entity-field "BidAmount" using "Binding="{Binding BidAmount}"?  It didn't work... :-/ --><!--
+            <!-- How do we bind to the "last/or/final value entered in the Label "lbBidAmount"? Is it via the entity-field "BidAmount" using "Binding="{Binding BidAmount}"?  It didn't work... :-/ -->
             <TextBox x:Name="txtProductSoldPrice" HorizontalAlignment="Left" Height="23" Margin="567,254,0,0" VerticalAlignment="Top" Width="200" VerticalContentAlignment="Center"/>
 
             <Label Name="lbCurrentBidAmount" Content="Bid Amount:" HorizontalAlignment="Left" Margin="575,306,0,0" VerticalAlignment="Top" Width="79"/>
@@ -70,21 +70,19 @@
                     <StackPanel.RenderTransform>
                         <TranslateTransform x:Name="CarouselTransform" />
                     </StackPanel.RenderTransform>
-                    <Button  Height="90" Width="160" Content="Page1"/>
 
-                    <Button Name="btnImage" Height="92" Width="162" Click="btnImage_Click" >
+                    <Button Name="btnImageCarouselPage1" Height="90" Width="160" Content="Page1"/>
+                    <Button Name="btnImageCarouselPage2" Height="92" Width="162" Click="btnImage_Click" >
                         <Grid Height="90" Width="160">
                             <TextBlock x:Name="tbImage" Text="Page 2" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <Image Name="imageViewer" Stretch="UniformToFill" />
                         </Grid>
                     </Button>
-
-
-
-                    <Button Height="90" Width="160" Content="Page3"/>
+                    <Button Name="btnImageCarouselPage3" Height="90" Width="160" Content="Page3"/>
                 </StackPanel>
-                <Button Click="btnLeft_Click" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Top="94"/>
-                <Button Click="btnRight_Click" Content="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Left="435" Canvas.Top="94"/>
+
+                <Button Name="btnLeft" Click="btnLeft_Click" Content="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Top="94"/>
+                <Button Name="btnRight" Click="btnRight_Click" Content="Right" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Canvas.Left="435" Canvas.Top="94"/>
             </Canvas>
 
 
@@ -94,7 +92,7 @@
             <Button x:Name="btnNext" Content="Next" HorizontalAlignment="Left" Margin="707,404,0,0" VerticalAlignment="Top" Width="60" Click="btnNext_Click"/>
 
 
-        </Grid>-->
+        </Grid>
     </Grid>
 </Window>
 

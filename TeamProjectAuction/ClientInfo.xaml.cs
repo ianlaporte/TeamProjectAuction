@@ -246,6 +246,7 @@ namespace TeamProjectAuction
             TargetClientAddress.ClientCountry = txtCountry.Text;
             TargetClientAddress.ClientPostCode = txtPostCode.Text;
             Globals.AuctionContext.SaveChanges();
+            MessageBox.Show("Address saved!", "Address saved");
         }
 
         private void BtnUpdate_OnClick(object sender, RoutedEventArgs e)
@@ -265,6 +266,18 @@ namespace TeamProjectAuction
         {
 
             DialogResult = true;
+        }
+
+        private void BtnProduct_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (IsNewClient)
+            {
+                MessageBox.Show("You have to save a new client before adding selling products.", "New client warning");
+                return;
+            }
+
+            ProductWindow pw = new ProductWindow(MyTargetClient);
+            bool? ReturnValue = pw.ShowDialog();
         }
     }
 }

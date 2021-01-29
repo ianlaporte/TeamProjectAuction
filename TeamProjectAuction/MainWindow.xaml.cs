@@ -28,6 +28,7 @@ namespace TeamProjectAuction
             {
                 cboSort.ItemsSource = Enum.GetValues(typeof(MyEnums.SortEnum));
                 Globals.AuctionContext = new AuctionDbContext();
+                OpenLotWhenStart();
                 OnStartWindowLoad();
             }
             catch (Exception e)
@@ -194,6 +195,25 @@ namespace TeamProjectAuction
 
         }
 
+        private void OpenLotWhenStart()
+        {
+            string[] lotNames = { "Nikola Tesla", "Albert Einstein", "Marie Curie", "Isaac Newton", "Charles Darwin", "Rosalind Franklin", 
+                "Galileo Galilei", "James Watt", "Michael Faraday", "Erwin Schrodinger", "Alan Turing", "James Maxwell", "James Joule",
+                "Alfred Nobel", "Alessandro Volta"};
+            if (Globals.AuctionContext.Lots.ToList().Count == 0)
+            {
+                foreach (string lotNameInList in lotNames)
+                {
+                    LotType NewLot = new LotType
+                    {
+                        LotName = lotNameInList
+                    };
+                    Globals.AuctionContext.Lots.Add(NewLot);
+                }
+
+                Globals.AuctionContext.SaveChanges();
+            }
+        }
 
         private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
         {
@@ -207,7 +227,65 @@ namespace TeamProjectAuction
             {
                 if (rdoClientNumber.IsChecked == true)
                 {
+                    int id;
+                    if (!Int32.TryParse(txtSearch.Text, out id))
+                    {
+                        
+                    }
 
+                    StartWindow targetStartWindow = new StartWindow();
+
+                    foreach (StartWindow sWindow in _startWindowValues)
+                    {
+                        if (sWindow.Id == id)
+                        {
+                            targetStartWindow.CopyOf(sWindow);
+                        }
+                    }
+
+                    lvClientInfo.ItemsSource = new List<StartWindow>
+                    {
+                        targetStartWindow
+                    };
+                    lvClientInfo.Items.Refresh();
+                }
+                else if (rdoName.IsChecked == true)
+                {
+                    string[] clientName = txtSearch.Text.Split(' ');
+                    
+                    StartWindow targetStartWindow = new StartWindow();
+                    
+                    foreach (StartWindow sWindow in _startWindowValues)
+                    {
+                        if (sWindow.FirstName == clientName[0] && sWindow.LastName == clientName[1])
+                        {
+                            targetStartWindow.CopyOf(sWindow);
+                        }
+                    }
+
+                    lvClientInfo.ItemsSource = new List<StartWindow>
+                    {
+                        targetStartWindow
+                    };
+                    lvClientInfo.Items.Refresh();
+                }
+                else
+                {
+                    StartWindow targetStartWindow = new StartWindow();
+
+                    foreach (StartWindow sWindow in _startWindowValues)
+                    {
+                        if (sWindow.PhoneNumber == txtSearch.Text)
+                        {
+                            targetStartWindow.CopyOf(sWindow);
+                        }
+                    }
+
+                    lvClientInfo.ItemsSource = new List<StartWindow>
+                    {
+                        targetStartWindow
+                    };
+                    lvClientInfo.Items.Refresh();
                 }
             }
             catch (Exception exception)
@@ -215,7 +293,13 @@ namespace TeamProjectAuction
                 Console.WriteLine(exception);
                 throw;
             }
-            
+        }
+
+        private void BtnClear_OnClick(object sender, RoutedEventArgs e)
+        {
+            txtSearch.Text = "";
+            lvClientInfo.ItemsSource = _startWindowValues;
+            lvClientInfo.Items.Refresh();
         }
     }
 }

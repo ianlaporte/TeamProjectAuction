@@ -11,15 +11,20 @@ namespace TeamProjectAuction
     {
         public static BitmapImage ByteArrayToBitmapImage(byte[] array)
         {
-            using (var ms = new System.IO.MemoryStream(array))
+            var image = new BitmapImage();
+            if (array != null)
             {
-                var image = new BitmapImage();
-                image.BeginInit();
-                image.CacheOption = BitmapCacheOption.OnLoad; // here
-                image.StreamSource = ms;
-                image.EndInit();
-                return image;
+                using (var ms = new System.IO.MemoryStream(array))
+                {
+                    
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad; // here
+                    image.StreamSource = ms;
+                    image.EndInit();
+                    
+                }
             }
+            return image;
         }
 
     }
