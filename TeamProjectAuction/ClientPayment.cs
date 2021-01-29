@@ -13,12 +13,14 @@ namespace TeamProjectAuction
         [Key] [ForeignKey("Client")] public int ClientId { get; set; }
 
         // Shouldn't we have a field to "set" the "prefered method of payment?" like : "ClientsPayments" (see: DbSet<ClientPayment> )
+        public MyEnums.PreferredPaymentType ClientPreferredPaymentType { get; set; }
 
         public double ClientDeposit { get; set; }
         public bool ClientCheque { get; set; }
         public int ClientCreditCardNumber { get; set; }
         public string ClientCreditCardExpireDate { get; set; }
         public int ClientCreditCardSecurityCode { get; set; }
+
 
         public virtual Client Client { get; set; }
     }

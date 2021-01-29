@@ -12,7 +12,7 @@ namespace TeamProjectAuction
     {
         [Key]
         public string ProductId { get; set; }
-        
+
         // Complete othe fields ...
 
         public virtual Client Client { get; set; }

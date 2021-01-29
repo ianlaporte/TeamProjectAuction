@@ -10,21 +10,19 @@
         <ListView Name="lvClientInfo" HorizontalAlignment="Left" Height="371" Margin="10,22,0,0" VerticalAlignment="Top" Width="461">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Client #" Width="80" DisplayMemberBinding="{Binding ClientId}"/>
-                    <GridViewColumn Header="First Name" Width="125" DisplayMemberBinding="{Binding ClientFirstName}"/>
-                    <GridViewColumn Header="Last Name" Width="125" DisplayMemberBinding="{Binding ClientLastName}"/>
-                    <GridViewColumn Header="Phone Number" Width="125" DisplayMemberBinding="{Binding ClientPhoneNumber}"/>
+                    <GridViewColumn Header="Client #" Width="80" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="First Name" Width="125" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Last Name" Width="125" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Phone Number" Width="125" DisplayMemberBinding="{Binding PhoneNumber}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label Name="lblSort" Content="Sort By" HorizontalAlignment="Left" Margin="495,25,0,0" VerticalAlignment="Top"/>
-        <ComboBox Name="cboSort" HorizontalAlignment="Left" Margin="595,28,0,0" VerticalAlignment="Top" Width="171">
-            <ComboBoxItem Content="Name" HorizontalContentAlignment="Center"/>
-            <ComboBoxItem Content="Client Number" HorizontalContentAlignment="Center"/>
-            <ComboBoxItem Content="Phone Number" HorizontalContentAlignment="Center"/>
+        <Label Name="lblSort" Content="Sort By" HorizontalAlignment="Left" Margin="513,25,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="cboSort" HorizontalAlignment="Left" Margin="595,28,0,0" VerticalAlignment="Top" Width="171" SelectionChanged="CboSort_OnSelectionChanged">
+
         </ComboBox>
 
-        <GroupBox Header="Search" Width="270" Margin="496,81,28,196">
+        <GroupBox Header="Search" Width="270" Margin="496,81,0,196">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <RadioButton Name="rdoName" Content="Name" Width="80" Height="30" VerticalContentAlignment="Center" GroupName="SearchGroup" Margin="5, 0, 5, 0"/>
@@ -32,12 +30,11 @@
                     <RadioButton Name="rdoClientNumber" Content="Client #" Width="80" VerticalContentAlignment="Center" GroupName="SearchGroup" Margin="5, 0, 0, 0"/>
                 </StackPanel>
                 <TextBox Name="txtSearch" Height="30" Margin="10"/>
-                <Button Name="btnSearch" Width="100" Height="30" Content="Search"/>
+                <Button Name="btnSearch" Width="100" Height="30" Content="Search" Click="BtnSearch_OnClick"/>
             </StackPanel>
         </GroupBox>
         <Button Name="btnAdd" Content="Add New Client" HorizontalAlignment="Left" Margin="534,308,0,0" VerticalAlignment="Top" Width="200" Click="BtnAdd_OnClick"/>
-        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="534,358,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="659,358,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="534,358,0,0" VerticalAlignment="Top" Width="200"/>
         <Button Name="btnDetail" Content="Show Details" HorizontalAlignment="Left" Margin="534,258,0,0" VerticalAlignment="Top" Width="200" Click="BtnDetail_OnClick"/>
     </Grid>
 </Window>

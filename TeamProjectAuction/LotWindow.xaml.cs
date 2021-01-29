@@ -23,5 +23,35 @@ namespace TeamProjectAuction
         {
             InitializeComponent();
         }
+
+        private void TxtLotNumber_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                int lotNumber;
+                if (!Int32.TryParse(txtLotNumber.Text, out lotNumber))
+                {
+                    MessageBox.Show("Lot number invalid!", "Lot number invalid warning");
+                    return;
+                }
+
+                LotType TargetLot = (from l in Globals.AuctionContext.Lots where l.LotId == lotNumber select l)
+                    .FirstOrDefault();
+                if (TargetLot.Products.Count != 0)
+                {
+                    lvLotDetails.ItemsSource = TargetLot.Products;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+        }
+
+        //private void LoadLotWindow()
+        //{
+
+        //}
     }
 }

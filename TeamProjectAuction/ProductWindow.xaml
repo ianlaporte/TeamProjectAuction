@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TeamProjectAuction"
         mc:Ignorable="d"
         Title="ProductWindow" Height="460" Width="740" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    
+
     <Grid>
         <ListView x:Name="lvProductOwners" HorizontalAlignment="Left" Height="263" Margin="16,15,0,0" VerticalAlignment="Top" Width="385" SelectionChanged="lvProductOwners_SelectionChanged">
             <ListView.View>
@@ -29,7 +29,6 @@
 
         <Label x:Name="lbOwnerName" Content="Owner Name: " HorizontalAlignment="Left" Margin="414,41,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtOwnerName" HorizontalAlignment="Left" Height="23" Margin="542,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
-
 
         <Label x:Name="lbLotId" Content="Lot Id:" HorizontalAlignment="Left" Margin="412,69,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtLotId" HorizontalAlignment="Left" Height="23" Margin="542,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
@@ -62,7 +61,7 @@
 
 
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="305,332,0,0" VerticalAlignment="Top" Width="65" Click="btnAdd_Click"/>
-        <!-- the "Add many" button (Name="btnAddManyProducts) opens a dialog page to upload many images and than the user has to update them one by one for product name, description, etc.., -->
+        <!-- For commit 28jan10h30: the "Add many" button (Name="btnAddManyProducts) opens a dialog page to upload many images and than the user has to update them one by one for product name, description, etc.., -->
         <Button x:Name="btnAddManyProducts" Content="Add many" HorizontalAlignment="Left" Margin="375,332,0,0" VerticalAlignment="Top" Width="65" Click="btnAddManyProducts_Click"/>
         <Button x:Name="btnSearchProduct" Content="Search" HorizontalAlignment="Left" Margin="445,332,0,0" VerticalAlignment="Top" Width="65" Click="btnSearchProduct_Click"/>
         <Button x:Name="btnSeeNextProduct" Content="See next" HorizontalAlignment="Left" Margin="515,332,0,0" VerticalAlignment="Top" Width="65" Click="btnSeeNextProduct_Click"/>
