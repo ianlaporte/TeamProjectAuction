@@ -195,12 +195,27 @@ namespace TeamProjectAuction
         }
 
 
-        //private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
-        //{
-        //    if (expr)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
+        private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
+        {
+            if ((rdoClientNumber.IsChecked == false && rdoName.IsChecked == false && rdoPhone.IsChecked == false) || txtSearch.Text.Length == 0)
+            {
+                MessageBox.Show("Invalid Input!", "No selection warning");
+                return;
+            }
+
+            try
+            {
+                if (rdoClientNumber.IsChecked == true)
+                {
+
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+            
+        }
     }
 }
