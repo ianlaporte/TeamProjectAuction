@@ -98,33 +98,33 @@ namespace TeamProjectAuction
             {
             
             */
-            int targetId = Int32.Parse(txtAuctionedProductOwnerId.Text);
+            //int targetId = Int32.Parse(txtAuctionedProductOwnerId.Text);
 
-            if (IsIdValid(targetId))
-            {
-                try
-                {
+            //if (IsIdValid(targetId))
+            //{
+            //    try
+            //    {
                     
                     
-                    List<Product> tempProduct = Globals.AuctionContext.Products.ToList();
+            //        List<Product> tempProduct = Globals.AuctionContext.Products.ToList();
 
-                    Product targetProduct =
-                        (from p in Globals.AuctionContext.Products where p.ProductId == targetId select p)
-                        .FirstOrDefault();
-                    if (targetProduct != null)
-                    {
-                        ProductImage = targetProduct.ProductImage;
-                    }
+            //        Product targetProduct =
+            //            (from p in Globals.AuctionContext.Products where p.ProductId == targetId select p)
+            //            .FirstOrDefault();
+            //        if (targetProduct != null)
+            //        {
+            //            ProductImage = targetProduct.ProductImage;
+            //        }
                     
-                    tbImage.Visibility = Visibility.Hidden;
-                    BitmapImage bitmap = Utils.ByteArrayToBitmapImage(ProductImage); // ex: SystemException
-                    imageViewer.Source = bitmap;
-                }
-                catch (Exception ex) when (ex is SystemException || ex is IOException)
-                {
-                    MessageBox.Show(ex.Message, "File reading failed", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-            }
+            //        tbImage.Visibility = Visibility.Hidden;
+            //        BitmapImage bitmap = Utils.ByteArrayToBitmapImage(ProductImage); // ex: SystemException
+            //        imageViewer.Source = bitmap;
+            //    }
+            //    catch (Exception ex) when (ex is SystemException || ex is IOException)
+            //    {
+            //        MessageBox.Show(ex.Message, "File reading failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+            //    }
+            //}
 
         }
 

@@ -8,7 +8,7 @@
         Title="ProductWindow" Height="460" Width="740" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     
     <Grid>
-        <ListView x:Name="lvProductOwners" HorizontalAlignment="Left" Height="263" Margin="16,15,0,0" VerticalAlignment="Top" Width="385" SelectionChanged="lvProductOwners_SelectionChanged">
+        <!--<ListView x:Name="lvProductOwners" HorizontalAlignment="Left" Height="263" Margin="16,15,0,0" VerticalAlignment="Top" Width="385" SelectionChanged="lvProductOwners_SelectionChanged">
             <ListView.View>
                 <GridView>
 
@@ -62,13 +62,13 @@
 
 
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="305,332,0,0" VerticalAlignment="Top" Width="65" Click="btnAdd_Click"/>
-        <!-- For commit 28jan10h30: the "Add many" button (Name="btnAddManyProducts) opens a dialog page to upload many images and than the user has to update them one by one for product name, description, etc.., -->
+        --><!-- For commit 28jan10h30: the "Add many" button (Name="btnAddManyProducts) opens a dialog page to upload many images and than the user has to update them one by one for product name, description, etc.., --><!--
         <Button x:Name="btnAddManyProducts" Content="Add many" HorizontalAlignment="Left" Margin="375,332,0,0" VerticalAlignment="Top" Width="65" Click="btnAddManyProducts_Click"/>
         <Button x:Name="btnSearchProduct" Content="Search" HorizontalAlignment="Left" Margin="445,332,0,0" VerticalAlignment="Top" Width="65" Click="btnSearchProduct_Click"/>
         <Button x:Name="btnSeeNextProduct" Content="See next" HorizontalAlignment="Left" Margin="515,332,0,0" VerticalAlignment="Top" Width="65" Click="btnSeeNextProduct_Click"/>
         <Button x:Name="btnUpdateProduct" Content="Update" IsEnabled="False" HorizontalAlignment="Left" Margin="305,358,0,0" VerticalAlignment="Top" Width="65" Click="btnUpdateProduct_Click"/>
         <Button x:Name="btnDeleteOneProduct" Content="Delete One Product" IsEnabled="False" HorizontalAlignment="Left" Margin="375,358,0,0" VerticalAlignment="Top" Width="65" Click="btnDeleteOneProduct_Click"/>
-        <Button x:Name="btnDeleteManyProducts" Content="Delete Multi Selection" IsEnabled="False" HorizontalAlignment="Left" Margin="445,358,0,0" VerticalAlignment="Top" Width="135" Click="btnManyProducts_Click" Height="20"/>
+        <Button x:Name="btnDeleteManyProducts" Content="Delete Multi Selection" IsEnabled="False" HorizontalAlignment="Left" Margin="445,358,0,0" VerticalAlignment="Top" Width="135" Click="btnManyProducts_Click" Height="20"/>-->
 
 
     </Grid>
