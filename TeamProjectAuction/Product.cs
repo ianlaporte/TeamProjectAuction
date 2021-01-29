@@ -13,6 +13,7 @@ namespace TeamProjectAuction
         public int ProductId { get; set; }
         [StringLength(100)]
         public string ProductName { get; set; }
+        [StringLength(100)]
         public MyEnums.ProductCategory CategoryName { get; set; }
         [StringLength(255)]
         public string ProductDescription { get; set; }

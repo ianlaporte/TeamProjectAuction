@@ -70,7 +70,7 @@
                     <StackPanel.RenderTransform>
                         <TranslateTransform x:Name="CarouselTransform" />
                     </StackPanel.RenderTransform>
-                    <Button  Height="90" Width="160" Content="Page1"/>
+                    <Button Name="" Height="90" Width="160" Content="Page1"/>
 
                     <Button Name="btnImage" Height="92" Width="162" Click="btnImage_Click" >
                         <Grid Height="90" Width="160">
