@@ -32,7 +32,7 @@
                     <RadioButton Name="rdoClientNumber" Content="Client #" Width="80" VerticalContentAlignment="Center" GroupName="SearchGroup" Margin="5, 0, 0, 0"/>
                 </StackPanel>
                 <TextBox Name="txtSearch" Height="30" Margin="10"/>
-                <Button Name="btnSearch" Width="100" Height="30" Content="Search"/>
+                <Button Name="btnSearch" Width="100" Height="30" Content="Search" Click="BtnSearch_OnClick"/>
             </StackPanel>
         </GroupBox>
         <Button Name="btnAdd" Content="Add New Client" HorizontalAlignment="Left" Margin="534,308,0,0" VerticalAlignment="Top" Width="200" Click="BtnAdd_OnClick"/>

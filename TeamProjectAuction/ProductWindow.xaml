@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TeamProjectAuction"
         mc:Ignorable="d"
         Title="ProductWindow" Height="460" Width="740" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    
+
     <Grid>
         <ListView x:Name="lvProductOwners" HorizontalAlignment="Left" Height="263" Margin="16,15,0,0" VerticalAlignment="Top" Width="385" SelectionChanged="lvProductOwners_SelectionChanged">
             <ListView.View>
@@ -29,7 +29,6 @@
 
         <Label x:Name="lbOwnerName" Content="Owner Name: " HorizontalAlignment="Left" Margin="414,41,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtOwnerName" HorizontalAlignment="Left" Height="23" Margin="542,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>
-
 
         <Label x:Name="lbLotId" Content="Lot Id:" HorizontalAlignment="Left" Margin="412,69,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtLotId" HorizontalAlignment="Left" Height="23" Margin="542,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" VerticalContentAlignment="Center"/>

@@ -14,7 +14,9 @@ namespace TeamProjectAuction
         }
 
         public enum SexEnum { Male, Female }
-        
+
+        public enum SortEnum { ClientNumber, FirstName, LastName }
+
         public enum ProductCategory
         {
             Accessories, Antiques, Appliances, Collectibles, Clothing, Deals, Electronics, Entertainment, Family, Farming, Furniture, Hobbies, Garden, Sports, Vehicles, Other

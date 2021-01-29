@@ -10,6 +10,7 @@ namespace TeamProjectAuction
 {
     public class Client
     {
+        private int _lotCount;
         private string _clientName;
         [Key] public int ClientId { get; set; }
         [Required] public string ClientFirstName { get; set; }
@@ -20,9 +21,15 @@ namespace TeamProjectAuction
 
         [NotMapped] public int ClientTrackingId { get; set; }
 
-        public int LotCount { get; set; }
+        [NotMapped]
+        public int LotCount
+        {
+            get => _lotCount;
+            set => _lotCount = ProductsForSellByClient.Count;
+        }
+        public virtual ICollection<Product> ProductsForSellByClient { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; } // never used
 
         public virtual ClientContact ClientContact { get; set; }
         public virtual ClientAddress ClientAddress { get; set; }

@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace TeamProjectAuction
 {
-    public class LotType
+    class Lot
     {
         [Key] public int LotId { get; set; }
-        public string LotName { get; set; }
 
-        public ICollection<Product> Products { get; set; }
     }
 }

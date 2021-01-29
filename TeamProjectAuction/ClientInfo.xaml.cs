@@ -35,7 +35,7 @@ namespace TeamProjectAuction
             MyTargetClient = TargetClient;
             InitializeComponent();
             LoadUpdateClientWindow(MyTargetClient);
-            
+
         }
 
         private void LoadNewClientWindow()
@@ -147,16 +147,6 @@ namespace TeamProjectAuction
                     MyTargetClient.ClientContact.ClientPhoneNumber = txtPhoneNumber.Text;
                     MyTargetClient.ClientContact.ClientFaceBook = txtFaceBook.Text;
 
-                    List<Client> temClients = Globals.AuctionContext.Clients.ToList();
-
-                    foreach (Client aClient in temClients)
-                    {
-                        aClient.ClientFirstName = "asdfasf";
-                    }
-                    
-                    
-                    
-                    
                     Globals.AuctionContext.SaveChanges();
                 }
 
@@ -187,11 +177,11 @@ namespace TeamProjectAuction
                         rdoFemale.IsChecked = true;
                         break;
                 }
-                
+
                 // Contact Part
                 ClientContact TargetClientContact = (from cc in Globals.AuctionContext.ClientsContacts
-                    where cc.ClientId == TargetClient.ClientId
-                    select cc).FirstOrDefault<ClientContact>();
+                                                     where cc.ClientId == TargetClient.ClientId
+                                                     select cc).FirstOrDefault<ClientContact>();
                 if (TargetClientContact != null)
                 {
                     txtPhoneNumber.Text = TargetClientContact.ClientPhoneNumber;
@@ -201,8 +191,8 @@ namespace TeamProjectAuction
 
                 // Address Part
                 ClientAddress TargetClientAddress = (from ca in Globals.AuctionContext.ClientsAddresses
-                    where ca.ClientId == TargetClient.ClientId
-                    select ca).FirstOrDefault<ClientAddress>();
+                                                     where ca.ClientId == TargetClient.ClientId
+                                                     select ca).FirstOrDefault<ClientAddress>();
                 if (TargetClientAddress != null)
                 {
                     txtStreetNumber.Text = TargetClientAddress.ClientStreetNumber;
@@ -246,8 +236,8 @@ namespace TeamProjectAuction
             }
 
             ClientAddress TargetClientAddress = (from ca in Globals.AuctionContext.ClientsAddresses
-                where ca.ClientId == MyTargetClient.ClientId
-                select ca).FirstOrDefault<ClientAddress>();
+                                                 where ca.ClientId == MyTargetClient.ClientId
+                                                 select ca).FirstOrDefault<ClientAddress>();
 
             TargetClientAddress.ClientStreetNumber = txtStreetNumber.Text;
             TargetClientAddress.ClientStreetName = txtStreetName.Text;
