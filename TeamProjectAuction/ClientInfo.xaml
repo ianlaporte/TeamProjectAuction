@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeamProjectAuction"
         mc:Ignorable="d"
-        Title="ClientInfo" MaxHeight="800" Width="800" SizeToContent="Height">
+        Title="ClientInfo" MaxHeight="800" Width="800" SizeToContent="Height" WindowStartupLocation="CenterScreen">
     <StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10, 20, 10, 10" Height="auto">
             <Label Name="lblFirstName" Content="First Name" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="50, 0, 0, 0"/>
@@ -68,24 +68,19 @@
             <TextBox Name="txtPhoneNumber" IsEnabled="False" Width="500" Margin="50, 0, 0, 0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10, 5, 10, 5" Height="auto">
-            <Label Name="lblSubscribe" Content="Newsletter" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="50, 0, 0, 0"/>
-            <CheckBox Name="chkSubscribe" Content="Subscribe" Margin="250, 0, 0, 0" VerticalAlignment="Center" IsChecked="False" IsEnabled="False"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10, 5, 10, 5" Height="auto">
             <Label Name="lblFaceBook" Content="FaceBook" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="50, 0, 0, 0"/>
             <TextBox Name="txtFaceBook" IsEnabled="False" Width="500" Margin="50, 0, 0, 0" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10, 5, 10, 5" Height="auto">
             <Label Name="lblPayment" Content="Payment" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="50, 0, 0, 0"/>
             <Label Name="lblPreferredPayment" Content="Preferred Payment: " Width="120" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="50, 0, 0, 0"/>
-            <ComboBox Name="cboPreferredPayment" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Width="200" IsEnabled="False">
-            </ComboBox>
-            <Button Name="btnPaymentDetail" Margin="50,0,0,0" Width="110" Content="Details"/>
+            <ComboBox Name="cboPreferredPayment" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Width="200" IsEnabled="False" />
+            <Button Name="btnPaymentDetail" Margin="50,0,0,0" Width="110" Content="Details" Click="BtnPaymentDetail_OnClick"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10, 5, 10, 5" Height="auto">
             <Label Name="lblProduct" Content="Product" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="50, 0, 0, 0"/>
-            <Button Name="btnProduct" Margin="50,0,0,0" Width="200" Content="Product"/>
-            <Button Name="btnLot" Margin="100,0,0,0" Width="200" Content="Lot"/>
+            <Button Name="btnProduct" Margin="190,0,0,0" Width="200" Content="Product List" Click="BtnProduct_OnClick" />
+            <!--<Button Name="btnLot" Margin="100,0,0,0" Width="200" Content="Lot"/>-->
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10, 25, 10, 15" Height="auto">
             <Button Name="btnUpdate" Margin="35,0,0,0" Width="200" Content="Update" Click="BtnUpdate_OnClick"/>

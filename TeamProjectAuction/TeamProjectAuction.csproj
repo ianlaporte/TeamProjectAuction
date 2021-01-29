@@ -63,6 +63,9 @@
       <DependentUpon>LotWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyEnums.cs" />
+    <Compile Include="PaymentDetailsWindow.xaml.cs">
+      <DependentUpon>PaymentDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs" />
     <Compile Include="ProductOwner.cs" />
     <Compile Include="StartWindow.cs" />
@@ -110,6 +113,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PaymentDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

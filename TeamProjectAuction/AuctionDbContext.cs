@@ -6,7 +6,7 @@ namespace TeamProjectAuction
 {
     public class AuctionDbContext : DbContext
     {
-        const string DbName = "AuctionDatabaseTest4.mdf";
+        const string DbName = "AuctionDatabaseTesta.mdf";
         static string DbPath = Path.Combine(Environment.CurrentDirectory, DbName);
 
         public AuctionDbContext() : base(

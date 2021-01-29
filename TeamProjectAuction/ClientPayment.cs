@@ -17,7 +17,7 @@ namespace TeamProjectAuction
         
         public double ClientDeposit { get; set; }
         public bool ClientCheque { get; set; }
-        public int ClientCreditCardNumber { get; set; }
+        public string ClientCreditCardNumber { get; set; }
         public string ClientCreditCardExpireDate { get; set; }
         public int ClientCreditCardSecurityCode { get; set; }
         

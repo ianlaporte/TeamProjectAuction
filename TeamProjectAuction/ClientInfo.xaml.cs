@@ -22,6 +22,7 @@ namespace TeamProjectAuction
         private int _clientTrackingId = 0;
         private Client MyTargetClient = new Client();
         private bool IsNewClient = false;
+        private ClientPayment MyClientPayment = new ClientPayment();
         public ClientInfo()
         {
             IsNewClient = true;
@@ -35,7 +36,6 @@ namespace TeamProjectAuction
             MyTargetClient = TargetClient;
             InitializeComponent();
             LoadUpdateClientWindow(MyTargetClient);
-            
         }
 
         private void LoadNewClientWindow()
@@ -58,6 +58,7 @@ namespace TeamProjectAuction
             txtPhoneNumber.IsEnabled = true;
             txtEmail.IsEnabled = true;
             txtFaceBook.IsEnabled = true;
+            cboPreferredPayment.IsEnabled = true;
             cboPreferredPayment.ItemsSource = Enum.GetValues(typeof(MyEnums.PreferredPaymentType));
         }
 
@@ -127,6 +128,18 @@ namespace TeamProjectAuction
                         NewClient.ClientAddress = NewClientAddress;
                         // Globals.AuctionContext.ClientsAddresses.Add(NewClientAddress);
 
+                        ClientPayment newClientPayment = new ClientPayment
+                        {
+                            ClientDeposit = MyClientPayment.ClientDeposit,
+                            ClientCheque = MyClientPayment.ClientCheque,
+                            ClientCreditCardNumber = MyClientPayment.ClientCreditCardNumber,
+                            ClientCreditCardExpireDate = MyClientPayment.ClientCreditCardExpireDate,
+                            ClientCreditCardSecurityCode = MyClientPayment.ClientCreditCardSecurityCode,
+                            ClientPreferredPaymentType = (MyEnums.PreferredPaymentType)cboPreferredPayment.SelectedItem,
+                            ClientId = NewClient.ClientId
+                        };
+                        NewClient.ClientPayment = newClientPayment;
+                        
                         Globals.AuctionContext.SaveChanges();
                     }
                 }
@@ -162,6 +175,7 @@ namespace TeamProjectAuction
 
         private void LoadUpdateClientWindow(Client TargetClient)
         {
+            cboPreferredPayment.ItemsSource = Enum.GetValues(typeof(MyEnums.PreferredPaymentType));
             try
             {
                 // General Part
@@ -201,6 +215,17 @@ namespace TeamProjectAuction
                     txtProvince.Text = TargetClientAddress.ClientProvince;
                     txtCountry.Text = TargetClientAddress.ClientCountry;
                     txtPostCode.Text = TargetClientAddress.ClientPostCode;
+                }
+                
+                // Payment Part
+                ClientPayment TargetClientPayment = (from cp in Globals.AuctionContext.ClientsPayments
+                    where cp.ClientId == TargetClient.ClientId
+                    select cp).FirstOrDefault<ClientPayment>();
+                if (TargetClientPayment != null)
+                {
+                    MyClientPayment = TargetClientPayment;
+                    int selectedIndex = (int) TargetClientPayment.ClientPreferredPaymentType;
+                    cboPreferredPayment.SelectedIndex = selectedIndex;
                 }
             }
             catch (Exception e)
@@ -246,6 +271,7 @@ namespace TeamProjectAuction
             TargetClientAddress.ClientCountry = txtCountry.Text;
             TargetClientAddress.ClientPostCode = txtPostCode.Text;
             Globals.AuctionContext.SaveChanges();
+            MessageBox.Show("Address saved!", "Address saved");
         }
 
         private void BtnUpdate_OnClick(object sender, RoutedEventArgs e)
@@ -259,12 +285,30 @@ namespace TeamProjectAuction
             txtPhoneNumber.IsEnabled = true;
             txtEmail.IsEnabled = true;
             txtFaceBook.IsEnabled = true;
+            cboPreferredPayment.IsEnabled = true;
         }
 
         private void BtnBack_OnClick(object sender, RoutedEventArgs e)
         {
-
             DialogResult = true;
+        }
+
+        private void BtnProduct_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (IsNewClient)
+            {
+                MessageBox.Show("You have to save a new client before adding selling products.", "New client warning");
+                return;
+            }
+
+            ProductWindow pw = new ProductWindow(MyTargetClient);
+            bool? ReturnValue = pw.ShowDialog();
+        }
+
+        private void BtnPaymentDetail_OnClick(object sender, RoutedEventArgs e)
+        {
+            PaymentDetailsWindow pdw = new PaymentDetailsWindow(MyClientPayment, IsNewClient);
+            bool? returnValue = pdw.ShowDialog();
         }
     }
 }

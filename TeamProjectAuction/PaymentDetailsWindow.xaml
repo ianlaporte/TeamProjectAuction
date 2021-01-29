@@ -1,0 +1,36 @@
+﻿<Window x:Class="TeamProjectAuction.PaymentDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeamProjectAuction"
+        mc:Ignorable="d"
+        Title="PaymentDetailsWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0, 40, 0, 0">
+            <Label Name="lblDeposit" Content="Deposit" Margin="50, 10, 0, 10" Width="150"/>
+            <TextBox Name="txtDeposit" Text="" Width="300" Margin="50, 10, 0, 10 " />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="lblCreditCardNumber" Content="Credit Card Number" Margin="50, 10, 0, 10" Width="150"/>
+            <TextBox Name="txtCreditCardNumber" Text="" Width="300" Margin="50, 10, 0, 10 " />
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal">
+            <Label Name="lblCreditCardExpireDate" Content="Credit Card Expire Date" Margin="50, 10, 0, 10" Width="150"/>
+            <TextBox Name="txtCreditCardExpireDate" Text="" Width="300" Margin="50, 10, 0, 10 " />
+            <Label Content="In form of mm/yy" Margin="50, 10, 0, 10" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="lblCreditCardSecurity" Content="Credit Card Security Code" Margin="50, 10, 0, 10" Width="150"/>
+            <TextBox Name="txtCreditCardSecurity" Text="" Width="300" Margin="50, 10, 0, 10 " />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="lblCheque" Content="Personal Cheque in store" Margin="50, 10, 0, 10" Width="150"/>
+            <CheckBox Name="chbCheque" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="195, 10, 0, 10"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 ,50, 0, 0" HorizontalAlignment="Center">
+            <Button Name="btnSave" Content="Save" Width="150" Click="BtnSave_OnClick"/>
+        </StackPanel>
+    </StackPanel>
+</Window>
