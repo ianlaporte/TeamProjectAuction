@@ -58,6 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LotType.cs" />
+    <Compile Include="LotWindow.xaml.cs">
+      <DependentUpon>LotWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MyEnums.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductOwner.cs" />
@@ -72,6 +76,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Invoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LotWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
