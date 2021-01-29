@@ -21,13 +21,12 @@ namespace TeamProjectAuction
     public partial class MainWindow : Window
     {
         private static List<StartWindow> _startWindowValues = new List<StartWindow>();
-        
         public MainWindow()
         {
             InitializeComponent();
             try
             {
-
+                cboSort.ItemsSource = Enum.GetValues(typeof(MyEnums.SortEnum));
                 Globals.AuctionContext = new AuctionDbContext();
                 OnStartWindowLoad();
             }
@@ -55,7 +54,7 @@ namespace TeamProjectAuction
                 if (startWindow.PhoneNumber == null)
                 {
                     startWindow.PhoneNumber =
-                        (from cc in Globals.AuctionContext.ClientsContacts
+                        (from cc in Globals.AuctionContext.ClientsContacts.Include("ProductsForSellByClient")
                             where cc.ClientId == startWindow.Id
                             select cc.ClientPhoneNumber).FirstOrDefault();
                 }
@@ -97,5 +96,111 @@ namespace TeamProjectAuction
                 lvClientInfo.Items.Refresh();
             }
         }
+        
+        private void SortTheList(string sortBy)
+        {
+            if (sortBy == "Last Name")
+            {
+                List<string> sortingString = new List<string>();
+                List<StartWindow> sortingStartWindows = new List<StartWindow>();
+                foreach (StartWindow sw in _startWindowValues)
+                {
+                    sortingStartWindows.Add(sw);
+                }
+                
+                foreach (StartWindow tempStartWindow in _startWindowValues)
+                {
+                    sortingString.Add(tempStartWindow.LastName);
+                }
+                sortingString.Sort();
+                _startWindowValues.Clear();
+                foreach (string str in sortingString)
+                {
+                    foreach (StartWindow sort in sortingStartWindows)
+                    {
+                        if (sort.LastName == str)
+                        {
+                            _startWindowValues.Add(sort);
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (sortBy == "First Name")
+            {
+                List<string> sortingString = new List<string>();
+                List<StartWindow> sortingStartWindows = new List<StartWindow>();
+                foreach (StartWindow sw in _startWindowValues)
+                {
+                    sortingStartWindows.Add(sw);
+                }
+                foreach (StartWindow tempStartWindow in _startWindowValues)
+                {
+                    sortingString.Add(tempStartWindow.FirstName);
+                }
+                _startWindowValues.Clear();
+                sortingString.Sort();
+
+                foreach (string str in sortingString)
+                {
+                    foreach (StartWindow sort in sortingStartWindows)
+                    {
+                        if (sort.FirstName == str)
+                        {
+                            _startWindowValues.Add(sort);
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int p = 0; p <= _startWindowValues.Count - 2; p++)
+                {
+                    for (int i = 0; i <= _startWindowValues.Count - 2; i++)
+                    {
+                        if (_startWindowValues[i].Id > _startWindowValues[i + 1].Id)
+                        {
+                            StartWindow Temp = new StartWindow();
+                            Temp.CopyOf(_startWindowValues[i + 1]);
+                            _startWindowValues[i + 1].CopyOf(_startWindowValues[i]);
+                            _startWindowValues[i].CopyOf(Temp);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void CboSort_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cboSort.SelectedIndex != -1)
+            {
+                switch ((MyEnums.SortEnum)cboSort.SelectedItem)
+                {
+                    case MyEnums.SortEnum.ClientNumber:
+                        SortTheList("Client Number");
+                        break;
+                    case MyEnums.SortEnum.FirstName:
+                        SortTheList("First Name");
+                        break;
+                    case MyEnums.SortEnum.LastName:
+                        SortTheList("Last Name");
+                        break;
+                }
+                lvClientInfo.ItemsSource = _startWindowValues;
+                lvClientInfo.Items.Refresh();
+            }
+
+        }
+
+
+        //private void BtnSearch_OnClick(object sender, RoutedEventArgs e)
+        //{
+        //    if (expr)
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //}
     }
 }
