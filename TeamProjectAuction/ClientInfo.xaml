@@ -84,7 +84,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10, 5, 10, 5" Height="auto">
             <Label Name="lblProduct" Content="Product" Width="100" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="50, 0, 0, 0"/>
-            <Button Name="btnProduct" Margin="50,0,0,0" Width="200" Content="Product"/>
+            <Button Name="btnProduct" Margin="50,0,0,0" Width="200" Content="Product" Click="BtnProduct_OnClick"/>
             <Button Name="btnLot" Margin="100,0,0,0" Width="200" Content="Lot"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10, 25, 10, 15" Height="auto">
